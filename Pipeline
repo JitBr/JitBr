@@ -9,21 +9,21 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build step...'
-                sh './build.sh'
+                sh 'chmod +x ./build.sh && ./build.sh'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh './test.sh'
+                sh 'chmod +x ./test.sh && ./test.sh'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                sh './deploy.sh'
+                sh 'chmod +x ./deploy.sh && ./deploy.sh'
             }
         }
     }
@@ -37,4 +37,3 @@ pipeline {
         }
     }
 }
-
