@@ -2,28 +2,28 @@ pipeline {
     agent any
 
     triggers {
-        // No automatic triggers; manual execution only
+        pollSCM('H/5 * * * *') // Checks the Git repo every 5 minutes
     }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Running build step...'
-                sh './build.sh'  // Make sure this script exists and is executable
+                sh './build.sh'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh './test.sh'  // Same here for test.sh
+                sh './test.sh'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                sh './deploy.sh'  // Replace with actual deploy logic
+                sh './deploy.sh'
             }
         }
     }
@@ -37,3 +37,4 @@ pipeline {
         }
     }
 }
+
