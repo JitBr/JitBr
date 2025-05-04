@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    triggers {
+        // No automatic triggers; manual execution only
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Running build step...'
+                sh './build.sh'  // Make sure this script exists and is executable
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                sh './test.sh'  // Same here for test.sh
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application...'
+                sh './deploy.sh'  // Replace with actual deploy logic
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
