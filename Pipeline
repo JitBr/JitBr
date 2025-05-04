@@ -9,21 +9,42 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build step...'
-                sh 'chmod +x ./build.sh && ./build.sh'
+                sh '''
+                    if test -f ./build.sh; then
+                        chmod +x ./build.sh && ./build.sh
+                    else
+                        echo "build.sh not found, skipping build."
+                        exit 1
+                    fi
+                '''
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'chmod +x ./test.sh && ./test.sh'
+                sh '''
+                    if test -f ./test.sh; then
+                        chmod +x ./test.sh && ./test.sh
+                    else
+                        echo "test.sh not found, skipping tests."
+                        exit 1
+                    fi
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                sh 'chmod +x ./deploy.sh && ./deploy.sh'
+                sh '''
+                    if test -f ./deploy.sh; then
+                        chmod +x ./deploy.sh && ./deploy.sh
+                    else
+                        echo "deploy.sh not found, skipping deploy."
+                        exit 1
+                    fi
+                '''
             }
         }
     }
@@ -37,3 +58,4 @@ pipeline {
         }
     }
 }
+
