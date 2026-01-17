@@ -1,4 +1,4 @@
-## Hi there PART-2👋
+## ⚡I have created this Repo to learn and master DevOps ⚡
 
 <!--
 **JitBr/JitBr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
